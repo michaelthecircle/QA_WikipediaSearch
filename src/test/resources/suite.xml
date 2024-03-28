@@ -1,0 +1,11 @@
+<suite name="Web Automation Suite">
+    <parameter name="url" value="https://www.wikipedia.org/wiki/VK_(company)" />
+    <parameter name="browser" value="chrome" />
+    <parameter name="textToSearch"
+               value="russia" />
+    <test name="Search Test">
+        <classes>
+            <class name="tests.TestFirstSuitablePage" />
+        </classes>
+    </test>
+</suite>

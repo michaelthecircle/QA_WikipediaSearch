@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.seleniumhq.selenium:selenium-java:2.41.0'
+    testImplementation 'org.testng:testng:7.7.0'
+    implementation 'io.github.bonigarcia:webdrivermanager:5.7.0'
+    //implementation 'org.slf4j:slf4j-api:2.0.7'
+    //implementation 'org.apache.logging.log4j:log4j-api:2.23.1'
+    //implementation 'org.apache.logging.log4j:log4j-core:2.23.1'
+}
+
+test {
+    useTestNG() {
+        suites 'src/test/resources/suite.xml'
+    }
+}
