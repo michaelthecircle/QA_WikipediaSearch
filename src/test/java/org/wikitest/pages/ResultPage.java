@@ -1,9 +1,9 @@
-package pages;
+package org.wikitest.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.BasePage.BasePage;
+import org.wikitest.utils.BasePage.BasePage;
 
 public class ResultPage extends BasePage {
     public ResultPage(WebDriver driver) {

@@ -1,0 +1,17 @@
+<configuration>
+    <property name="LOG_DIR" value="C:\Users\mount\OneDrive\Документы\GitHub\SeleniumWikiSearch\logs"/>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- логи настроены на вывод информации за час. При необходимости в 7 строке можно повысить частоту создания файлов, вписав после HH например mm-ss -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/%d{yyyy_dd_MM-HH}th-hour.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{dd.MM.yyyy HH:mm:ss.SSS} %-5level [%thread] %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>

@@ -1,12 +1,15 @@
-package utils;
+package org.wikitest.utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.safari.SafariOptions;
 
 import java.util.Objects;
+
 
 public class Driver {
     private final WebDriver webDriver;
@@ -16,13 +19,13 @@ public class Driver {
             WebDriverManager.chromedriver().setup();
             ChromeOptions option = new ChromeOptions();
             webDriver = new ChromeDriver(option);
-            /*ChromeOptions option = new ChromeOptions();
-            String path = System.getProperty("user.dir");
-            System.out.println(path);
-            System.setProperty("webdriver.chrome.driver",path+"\\drivers\\chromedriver.exe");
-            webDriver = new ChromeDriver(option);*/
-        } else { //добавить логику для сафари
-            this.webDriver = new SafariDriver();
+        } else if (Objects.equals(browserName, "safari")) {
+            WebDriverManager.safaridriver().setup();
+            SafariOptions options = new SafariOptions();
+            webDriver = new SafariDriver(options);
+        } else {
+            WebDriverManager.firefoxdriver().setup();
+            webDriver = new FirefoxDriver();
         }
     }
     public WebDriver getDriver() {

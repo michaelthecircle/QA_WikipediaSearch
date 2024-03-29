@@ -1,4 +1,4 @@
-package utils.BasePage;
+package org.wikitest.utils.BasePage;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

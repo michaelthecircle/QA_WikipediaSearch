@@ -1,9 +1,10 @@
-package pages;
+package org.wikitest.pages;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.BasePage.BasePage;
+import org.wikitest.utils.BasePage.BasePage;
 
 public class HomePage extends BasePage {
     public HomePage(WebDriver driver) {

@@ -1,3 +1,4 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="Web Automation Suite">
     <parameter name="url" value="https://www.wikipedia.org/wiki/VK_(company)" />
     <parameter name="browser" value="chrome" />
@@ -5,7 +6,7 @@
                value="russia" />
     <test name="Search Test">
         <classes>
-            <class name="tests.TestFirstSuitablePage" />
+            <class name="org.wikitest.tests.TestFirstSuitablePage" />
         </classes>
     </test>
 </suite>

@@ -1,11 +1,13 @@
-package utils.BaseTest;
+package org.wikitest.utils.BaseTest;
 
+import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
-import pages.HomePage;
-import utils.Driver;
+import org.wikitest.pages.HomePage;
+import org.wikitest.utils.Driver;
 
+@Slf4j
 public class BaseTest {
     Driver driver;
 
@@ -20,6 +22,7 @@ public class BaseTest {
         driver.getDriver().get(url);
     }
     public HomePage loadFirstPage() {
+        log.info("loading first page");
         return new HomePage(driver.getDriver());
     }
     @AfterMethod()
