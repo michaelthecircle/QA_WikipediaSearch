@@ -1,5 +1,6 @@
 package org.wikitest.pages;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +11,9 @@ import org.wikitest.utils.BasePage.BasePage;
 
 import java.util.List;
 
+import static org.openqa.selenium.By.xpath;
+
+@Slf4j
 public class HomePage extends BasePage {
     public HomePage(WebDriver driver) {
         super(driver);
@@ -24,16 +28,14 @@ public class HomePage extends BasePage {
     public ResultPage searchText(String text){
         searchInput.sendKeys(text);
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("suggestions-container"))); // Ожидаем видимости контейнера с подсказками
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("cdx-menu"))); // Ожидаем видимости контейнера с подсказками
 
-        List<WebElement> searchResults = driver.findElements(By.cssSelector(".suggestions li"));
 
+        List<WebElement> searchResults = driver.findElements(By.xpath("//ul[@id='cdx-typeahead-search-menu-0']/li"));
+        short i = 0;
         for (WebElement element : searchResults) {
-            element.click();
-            String linkText = element.getText();
-            System.out.println(linkText);
+            log.info(i++ + " element of list = " + element.getText());
         }
-
         searchButton.click();
         return new ResultPage(super.getDriver());
     }
