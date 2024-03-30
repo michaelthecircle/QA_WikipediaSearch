@@ -17,7 +17,6 @@ public class BasePage {
         PageFactory.initElements(driver, this);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(20).getSeconds());
     }
-
     public WebDriver getDriver() {
         return driver;
     }
@@ -29,21 +28,9 @@ public class BasePage {
     public void waitToBeClickable(WebElement element) {
         getWait().until(ExpectedConditions.elementToBeClickable(element));
     }
-
-    /**
-     * Wait element to be visible.
-     *
-     * @param element : WebElement
-     */
     public void waitElementVisibility(WebElement element) {
         getWait().until(ExpectedConditions.visibilityOf(element));
     }
-
-    /**
-     * Static wait, wait in seconds, this wait should be the last option as a wait.
-     *
-     * @param time : Integer
-     */
     public void waitSomeSeconds(int time) {
         try {
             Thread.sleep(time * 1000L);

@@ -11,8 +11,6 @@ import org.wikitest.utils.BasePage.BasePage;
 
 import java.util.List;
 
-import static org.openqa.selenium.By.xpath;
-
 @Slf4j
 public class HomePage extends BasePage {
     public HomePage(WebDriver driver) {
@@ -22,21 +20,21 @@ public class HomePage extends BasePage {
     @FindBy(css = "[name='search']")
     private WebElement searchInput;
 
-    @FindBy(css = "#searchform button")
-    private WebElement searchButton;
-
-    public ResultPage searchText(String text){
+    public boolean searchText(String text){
         searchInput.sendKeys(text);
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("cdx-menu"))); // Ожидаем видимости контейнера с подсказками
 
-
         List<WebElement> searchResults = driver.findElements(By.xpath("//ul[@id='cdx-typeahead-search-menu-0']/li"));
         short i = 0;
-        for (WebElement element : searchResults) {
-            log.info(i++ + " element of list = " + element.getText());
+        boolean startsCorrectly = true;
+        for (WebElement element : searchResults.subList(0, 9)) { // 10 элемент сайджеста - стандартная строка "search for pages containing"
+            String elementText = element.getText();
+            log.info(i++ + " element of list = " + elementText.replaceAll("\\s+", " "));
+            if (!elementText.trim().toLowerCase().startsWith(text.toLowerCase())) {
+                startsCorrectly = false;
+            }
         }
-        searchButton.click();
-        return new ResultPage(super.getDriver());
+        return startsCorrectly;
     }
 }
