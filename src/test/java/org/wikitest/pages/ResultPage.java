@@ -15,7 +15,6 @@ public class ResultPage extends BasePage {
 
     public boolean isTitleCorrect(String title){
         waitElementVisibility(pageTitle);
-        return pageTitle.isDisplayed() &&
-                pageTitle.getText().equalsIgnoreCase(title);
+        return pageTitle.isDisplayed() && pageTitle.getText().equalsIgnoreCase(title);
     }
 }

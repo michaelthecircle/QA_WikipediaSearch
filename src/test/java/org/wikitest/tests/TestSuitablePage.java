@@ -9,15 +9,15 @@ import org.wikitest.utils.BaseTest.BaseTest;
 import static org.testng.Assert.assertTrue;
 
 @Slf4j
-public class TestSuitableNames extends BaseTest {
+public class TestSuitablePage extends BaseTest {
     @Test
     @Parameters({ "textToSearch" })
-    public void searchTest(String textToSearch){
-        log.info("launched searchTest");
+    public void firstPageTest(String textToSearch) {
+        log.info("launched firstPageTest");
         HomePage home = loadFirstPage();
         log.info("first page loaded successfully");
-        boolean result = home.searchText(textToSearch);
-        log.info("searchTest gave " + result + " result");
-        assertTrue(result, "There's a suggestion which title doesn't match the given word");
+        boolean result = home.enterFirstPage(textToSearch).isTitleCorrect(textToSearch);
+        log.info("firstPageTest gave " + result + " result");
+        assertTrue(result, "First available page has a title that differs from the given one");
     }
 }

@@ -20,21 +20,33 @@ public class HomePage extends BasePage {
     @FindBy(css = "[name='search']")
     private WebElement searchInput;
 
-    public boolean searchText(String text){
+    @FindBy(css = "#searchform button")
+    private WebElement searchButton;
+
+    public boolean searchText(String text) {
         searchInput.sendKeys(text);
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("cdx-menu"))); // Ожидаем видимости контейнера с подсказками
 
         List<WebElement> searchResults = driver.findElements(By.xpath("//ul[@id='cdx-typeahead-search-menu-0']/li"));
+        log.info("got list of elements in suggest");
         short i = 0;
         boolean startsCorrectly = true;
         for (WebElement element : searchResults.subList(0, 9)) { // 10 элемент сайджеста - стандартная строка "search for pages containing"
             String elementText = element.getText();
-            log.info(i++ + " element of list = " + elementText.replaceAll("\\s+", " "));
+            log.info("№ " + i++ + " element of list = " + elementText.replaceAll("\\s+", " "));
             if (!elementText.trim().toLowerCase().startsWith(text.toLowerCase())) {
                 startsCorrectly = false;
             }
         }
         return startsCorrectly;
+    }
+
+    public ResultPage enterFirstPage(String text) {
+        searchInput.sendKeys(text);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOf(searchButton));
+        searchButton.click();
+        return new ResultPage(super.getDriver());
     }
 }
