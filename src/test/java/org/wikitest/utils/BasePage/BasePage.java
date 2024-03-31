@@ -21,9 +21,6 @@ public class BasePage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(20).getSeconds());
     }
 
-    public void waitToBeClickable(WebElement element) {
-        getWait().until(ExpectedConditions.elementToBeClickable(element));
-    }
     public void waitElementVisibility(WebElement element) {
         getWait().until(ExpectedConditions.visibilityOf(element));
     }

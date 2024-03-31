@@ -2,13 +2,14 @@
 <suite name="Web Automation Suite">
     <parameter name="url" value="https://www.wikipedia.org/wiki/VK_(company)" />
     <parameter name="browser" value="chrome" />
-    <!-- параметр используется для теста TestSuitableNames и TestSuitablePage-->
+    <!-- параметр используется для теста TestSuitableNames и TestSuitablePage -->
     <parameter name="textToSearch" value="music" />
-    <!-- параметр используется для позитивного теста TestSuitableSuggestion-->
+    <!-- параметр используется для позитивного теста TestSuitableSuggestion -->
     <parameter name="positiveSearchText" value="apple"/>
-    <!-- параметр используется для негативного теста TestSuitableSuggestion-->
+    <!-- параметр используется для негативного теста TestSuitableSuggestion -->
     <parameter name="negativeSearchText" value="appleeeee"/>
-    <test name="Search Test">
+    <!-- тесты запускаются параллельно -->
+    <test name="Search Test" parallel="true">
         <classes>
             <class name="org.wikitest.tests.TestSuitableNames" />
             <class name ="org.wikitest.tests.TestSuitablePage" />

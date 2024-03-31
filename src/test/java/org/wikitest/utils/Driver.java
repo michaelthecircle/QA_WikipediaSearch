@@ -15,7 +15,7 @@ public class Driver {
     private final WebDriver webDriver;
 
     public Driver(String browserName) {
-        if (Objects.equals(browserName, "chrome")) {
+        if (Objects.equals(browserName, "chrome")) { //хром работает успешно, остальные браузеры добавлены, но не тестированы
             WebDriverManager.chromedriver().setup();
             ChromeOptions option = new ChromeOptions();
             webDriver = new ChromeDriver(option);

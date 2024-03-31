@@ -11,11 +11,11 @@ import org.wikitest.utils.BaseTest.BaseTest;
 import static org.testng.Assert.assertTrue;
 
 @Slf4j
-public class TestSuitableNames extends BaseTest {
+public class TestSuitableNames extends BaseTest { //Тест 1 - проверяет, что все подсказки начинаются на заданное слово
     private static final Logger logger = LoggerFactory.getLogger(TestSuitableNames.class);
     @Test
     @Parameters({ "textToSearch" })
-    public void searchTest(String textToSearch){
+    public void searchTest(String textToSearch) {
         log.info("launched searchTest");
         HomePage home = loadFirstPage();
         log.info("first page loaded successfully");

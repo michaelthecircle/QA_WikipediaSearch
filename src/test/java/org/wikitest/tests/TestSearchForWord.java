@@ -13,10 +13,11 @@ import static org.testng.Assert.assertTrue;
 
 @Slf4j
 public class TestSearchForWord extends BaseTest {
+    //Тест 4 - проверяет что при каждом запросе в поиске есть предложение перейти на страницу с поисковыми результатами
     private static final Logger logger = LoggerFactory.getLogger(TestSuitableNames.class);
     @Test
     @Parameters({ "positiveSearchText" })
-    public void searchWithSuggestion(String positiveSearchText) {
+    public void searchWithSuggestion(String positiveSearchText) { //при вводе слова будут подсказки => пройдемся по ним до перехода на желаемую тестом страницу
         log.info("launched searchWithSuggestion");
         HomePage home = loadFirstPage();
         log.info("first page loaded successfully");
@@ -26,7 +27,7 @@ public class TestSearchForWord extends BaseTest {
     }
     @Test
     @Parameters({ "negativeSearchText" })
-    public void searchWithoutSuggestion(String negativeSearchText) {
+    public void searchWithoutSuggestion(String negativeSearchText) { //при вводе слова не будет подсказок кроме желаемой страницы
         log.info("launched searchWithoutSuggestion");
         HomePage home = loadFirstPage();
         boolean result = home.checkLastSuggestion(negativeSearchText);
