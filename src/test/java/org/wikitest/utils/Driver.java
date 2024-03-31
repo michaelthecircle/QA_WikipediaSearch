@@ -32,5 +32,4 @@ public class Driver {
         return this.webDriver;
     }
 
-
 }

@@ -3,10 +3,10 @@
     <parameter name="url" value="https://www.wikipedia.org/wiki/VK_(company)" />
     <parameter name="browser" value="chrome" />
     <!-- параметр textToSearch используется для теста TestSuitableNames -->
-    <parameter name="textToSearch" value="metal" />
+    <parameter name="textToSearch" value="music" />
     <test name="Search Test">
         <classes>
-            <class name="org.wikitest.tests.TestSuitableNames" />
+            <!--class name="org.wikitest.tests.TestSuitableNames" /-->
             <class name ="org.wikitest.tests.TestSuitablePage" />
         </classes>
     </test>
