@@ -8,8 +8,7 @@
     <parameter name="positiveSearchText" value="apple"/>
     <!-- параметр используется для негативного теста TestSuitableSuggestion -->
     <parameter name="negativeSearchText" value="appleeeee"/>
-    <!-- тесты запускаются параллельно -->
-    <test name="Search Test" parallel="true">
+    <test name="Search Test">
         <classes>
             <class name="org.wikitest.tests.TestSuitableNames" />
             <class name ="org.wikitest.tests.TestSuitablePage" />

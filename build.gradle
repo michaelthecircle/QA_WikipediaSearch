@@ -23,5 +23,6 @@ dependencies {
 test {
     useTestNG() {
         suites 'src/test/resources/testng.xml'
+        systemProperty 'runMode', System.getProperty('runMode', 'parallel')
     }
 }
