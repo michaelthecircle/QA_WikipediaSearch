@@ -10,11 +10,11 @@ public class ResultPage extends BasePage {
         super(driver);
     }
 
-    @FindBy(css = ".mw-page-title-main")
+    @FindBy(xpath = "//*[@id=\"firstHeading\"]")
     private WebElement pageTitle;
 
     public boolean isTitleCorrect(String title){
         waitElementVisibility(pageTitle);
-        return pageTitle.isDisplayed() && pageTitle.getText().equalsIgnoreCase(title);
+        return pageTitle.isDisplayed() && pageTitle.getText().startsWith(title);
     }
 }
