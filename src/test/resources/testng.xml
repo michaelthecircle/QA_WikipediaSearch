@@ -13,6 +13,7 @@
             <class name="org.wikitest.tests.TestSuitableNames" />
             <class name ="org.wikitest.tests.TestSuitablePage" />
             <class name ="org.wikitest.tests.TestSuitableSuggestion" />
+            <class name ="org.wikitest.tests.TestSearchForWord" />
         </classes>
     </test>
 </suite>

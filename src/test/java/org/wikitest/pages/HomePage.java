@@ -104,4 +104,26 @@ public class HomePage extends BasePage {
         String searchURL = driver.getCurrentUrl();
         return firstSugURL.equals(searchURL);
     }
+
+    public boolean checkLastSuggestion(String text) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        waitSearchInputAndClick(text);
+        log.debug("send keys to the search field");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("cdx-menu")));
+        var listOfSuggestions = driver.findElements(By.xpath("//ul[@id='cdx-typeahead-search-menu-0']/li"));
+        log.debug("got list of suggestions");
+        boolean result = false;
+        for (var element : listOfSuggestions) {
+            String elementText = element.getText().replaceAll("\\s+", " ");
+            if (elementText.equals("Search for pages containing " + text)) {
+                wait.until(ExpectedConditions.visibilityOf(element));
+                wait.until(ExpectedConditions.elementToBeClickable(element));
+                element.click();
+                ResultPage resultPage = new ResultPage(super.getDriver());
+                result = resultPage.isTitleCorrect("Search results");
+                driver.navigate().back();
+            }
+        }
+        return result;
+    }
 }

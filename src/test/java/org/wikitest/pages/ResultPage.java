@@ -15,6 +15,7 @@ public class ResultPage extends BasePage {
 
     public boolean isTitleCorrect(String title){
         waitElementVisibility(pageTitle);
+        System.out.println(pageTitle.getText());
         return pageTitle.isDisplayed() && pageTitle.getText().startsWith(title);
     }
 }
