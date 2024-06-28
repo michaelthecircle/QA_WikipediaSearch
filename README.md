@@ -1,5 +1,5 @@
-## QA_WikipediaSearch
-Автоматическое тестирование поиска Wikipedia с применением паттерна PageObject
+# QA_WikipediaSearch
+##Автоматическое тестирование поиска Wikipedia с применением паттерна PageObject
 
 1) Java 17 
 2) система сборки gradle 
