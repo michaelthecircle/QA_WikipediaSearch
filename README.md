@@ -1,4 +1,4 @@
-## QA_WikipediaSearch
+# WikipediaSearch automation
 Автоматическое тестирование поиска Wikipedia с применением паттерна PageObject
 
 1) Java 17 
